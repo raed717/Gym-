@@ -1,0 +1,17 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 4306,
+            "driver": "MySQL",
+            "name": "gym_raed",
+            "database": "gym_raed",
+            "username": "root",
+            "password": ""
+        }
+    ]
+}
