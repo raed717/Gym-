@@ -37,7 +37,7 @@
       <Button layoutX="569.0" layoutY="517.0" mnemonicParsing="false" onAction="#bouton_modifier" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: FFD661;" text="Modifier" />
       <VBox layoutY="-1.0" prefHeight="594.0" prefWidth="179.0" style="-fx-background-color: #483D8B;">
          <children>
-            <Button fx:id="go_client" mnemonicParsing="false" onAction="#go_client" onMouseClicked="#AfficherClient" prefHeight="62.0" prefWidth="182.0" style="-fx-background-color: #DDDDDD; -fx-border-color: black;" text="Client">
+            <Button fx:id="go_client" mnemonicParsing="false" onAction="#go_client" prefHeight="62.0" prefWidth="182.0" style="-fx-background-color: #DDDDDD; -fx-border-color: black;" text="Client">
                <font>
                   <Font size="30.0" />
                </font>
