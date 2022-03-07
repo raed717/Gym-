@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="501.0" prefWidth="855.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VGestion_abonnementController">
+   <children>
+      <Text layoutX="437.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Abonnement" />
+      <TextField fx:id="iNom_abonnement" layoutX="217.0" layoutY="337.0" promptText="Nom abonnement" />
+      <TextField fx:id="iDescription_ab" layoutX="217.0" layoutY="420.0" prefHeight="66.0" prefWidth="150.0" promptText="Description" />
+      <TextField fx:id="iprix_ab" layoutX="217.0" layoutY="377.0" promptText="Prix" />
+      <Button layoutX="689.0" layoutY="403.0" mnemonicParsing="false" onAction="#AddAbonnement" text="Ajouter" />
+      <Text layoutX="226.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau Abonnement" />
+      <TableView fx:id="tab_ab" layoutX="224.0" layoutY="64.0" prefHeight="206.0" prefWidth="609.0">
+        <columns>
+          <TableColumn fx:id="id_abonnement" prefWidth="36.0" text="ID" />
+          <TableColumn fx:id="nom_ab" prefWidth="116.0" text="Nom abonnement" />
+            <TableColumn fx:id="description" prefWidth="317.5999755859375" text="Description" />
+            <TableColumn fx:id="prix_ab" prefWidth="103.20003662109377" text="prix" />
+        </columns>
+      </TableView>
+      <Button layoutX="592.0" layoutY="438.0" mnemonicParsing="false" onAction="#Bouton_Supprimer" style="-fx-background-color: #ff0000;" text="Supprimer" />
+      <Button layoutX="418.0" layoutY="437.0" mnemonicParsing="false" onAction="#Bouton_Rechercher" text="Rechercher" />
+      <Button layoutX="687.0" layoutY="439.0" mnemonicParsing="false" onAction="#AfficherAbonnement" style="-fx-background-color: #33ff00;" text="Afficher" />
+      <TextField fx:id="id_text" layoutX="504.0" layoutY="437.0" prefHeight="26.0" prefWidth="58.0" promptText="id" />
+      <Button layoutX="590.0" layoutY="405.0" mnemonicParsing="false" onAction="#bouton_modifier" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: FFD661;" text="Modifier" />
+   </children>
+</AnchorPane>

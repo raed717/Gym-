@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="591.0" prefWidth="798.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VGestion_ClientDashboardController">
+   <children>
+      <Text layoutX="361.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Client" />
+      <Button layoutX="571.0" layoutY="550.0" mnemonicParsing="false" onAction="#Bouton_Supprimer" style="-fx-background-color: #ff0000;" text="Supprimer" />
+      <Button layoutX="397.0" layoutY="549.0" mnemonicParsing="false" onAction="#Bouton_Rechercher" text="Rechercher" />
+      <TableView fx:id="tab_client" layoutX="184.0" layoutY="42.0" prefHeight="329.0" prefWidth="598.0" style="-fx-background-color: #0000;">
+         <columns>
+            <TableColumn fx:id="id" prefWidth="44.800048828125" text="ID" />
+            <TableColumn fx:id="nom" prefWidth="78.4000244140625" text="Nom" />
+            <TableColumn fx:id="prenom" prefWidth="97.5999755859375" text="Prenom" />
+            <TableColumn fx:id="adresse" prefWidth="77.5999755859375" text="Adresse" />
+            <TableColumn fx:id="mail" prefWidth="106.4000244140625" text="Email" />
+            <TableColumn fx:id="mdp_client" prefWidth="91.199951171875" text="mot de passe" />
+            <TableColumn fx:id="id_abonnement" prefWidth="100.7999267578125" text="ID ABonnement" />
+         </columns>
+      </TableView>
+      <Button layoutX="666.0" layoutY="551.0" mnemonicParsing="false" onAction="#AfficherClient" style="-fx-background-color: #33ff00;" text="Afficher" />
+      <Button layoutX="733.0" layoutY="551.0" mnemonicParsing="false" onAction="#Export" text="Export" />
+      <TextField fx:id="id_text" layoutX="483.0" layoutY="549.0" prefHeight="26.0" prefWidth="37.0" promptText="id" />
+      <TextField fx:id="nom_txt" layoutX="199.0" layoutY="384.0" promptText="Nom" />
+      <TextField fx:id="abonnement_txt" layoutX="199.0" layoutY="550.0" promptText="Abonnement" />
+      <TextField fx:id="mdp_txt" layoutX="199.0" layoutY="518.0" promptText="mot de passe" />
+      <TextField fx:id="email_txt" layoutX="199.0" layoutY="484.0" promptText="Email" />
+      <TextField fx:id="prenom_txt" layoutX="199.0" layoutY="420.0" promptText="Prenom" />
+      <TextField fx:id="adresse_txt" layoutX="199.0" layoutY="452.0" promptText="Adresse" />
+      <Button layoutX="569.0" layoutY="517.0" mnemonicParsing="false" onAction="#bouton_modifier" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: FFD661;" text="Modifier" />
+   </children>
+</AnchorPane>
