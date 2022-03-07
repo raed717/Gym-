@@ -170,7 +170,7 @@ public class VGestion_ClientController implements Initializable {
     
     
     
-    @FXML  
+        @FXML  
     private void logIn2 (ActionEvent event) throws Exception{  
         
        connexion = MyDB.getInstance().getConnexion();
@@ -183,8 +183,8 @@ public class VGestion_ClientController implements Initializable {
             resultSet = preparedStatement.executeQuery();
             
             if(resultSet.next()){ 
-                JOptionPane.showMessageDialog(null, "Username And Password is Corect");
-                setLblError(Color.GREEN, "Login Successful..Redirecting..");
+                JOptionPane.showMessageDialog(null, "Email et mot de passe sont correctes");
+                setLblError(Color.GREEN, "Connexion réussie..Redirection..");
                 
                 btnSignin.getScene().getWindow().hide();
                 Parent root = FXMLLoader.load(getClass().getResource("VGestion_ClientDashboard.fxml"));
@@ -194,8 +194,8 @@ public class VGestion_ClientController implements Initializable {
                 mainStage.show();
                 
             }else
-                setLblError(Color.TOMATO, "Enter Correct Email/Password");
-                JOptionPane.showMessageDialog(null, "Invalide Username Or Password");
+                setLblError(Color.TOMATO, "Entrez le bon e-mail/mot de passe");
+                //JOptionPane.showMessageDialog(null, "E-mail ou mot de passe invalide");
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
