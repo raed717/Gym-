@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Doc/NetBeansProjects/PidevJavanb/src/pidevjava/PidevJava.java</file>
-            <file>file:/D:/Doc/NetBeansProjects/PidevJavanb/src/view/VGestion_ClientController.java</file>
-            <file>file:/D:/Doc/NetBeansProjects/PidevJavanb/src/utils/MyDB.java</file>
-            <file>file:/D:/Doc/NetBeansProjects/PidevJavanb/src/services/ClientService.java</file>
+            <file>file:/D:/Doc/NetBeansProjects/github/GymPlus/src/view/VGestion_ClientDashboardController.java</file>
+            <file>file:/D:/Doc/NetBeansProjects/github/GymPlus/src/view/VGestion_abonnementController.java</file>
+            <file>file:/D:/Doc/NetBeansProjects/github/GymPlus/src/view/VGestion_ClientController.java</file>
+            <file>file:/D:/Doc/NetBeansProjects/github/GymPlus/src/pidevjava/PidevJava.java</file>
         </group>
     </open-files>
 </project-private>

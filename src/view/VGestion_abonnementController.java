@@ -6,6 +6,7 @@
 package view;
 import services.AbonnementService;
 import entities.Abonnement;
+import java.io.IOException;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -18,11 +19,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import utils.MyDB;
 
@@ -140,7 +146,39 @@ public class VGestion_abonnementController implements Initializable {
     
     
 
-
+ @FXML
+    private Button go_abonnement;
+        @FXML
+    void Go_abonnement(ActionEvent event) throws IOException {
+        go_abonnement.getScene().getWindow().hide();
+         Parent root = FXMLLoader.load(getClass().getResource("VGestion_abonnement.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
+    }
+    @FXML
+    private Button go_logout;
+        @FXML
+    void go_logout(ActionEvent event) throws IOException {
+        go_logout.getScene().getWindow().hide();
+         Parent root = FXMLLoader.load(getClass().getResource("VGestion_client.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
+    }
+        @FXML
+    private Button go_client;
+        @FXML
+    void go_client(ActionEvent event) throws IOException {
+        go_client.getScene().getWindow().hide();
+         Parent root = FXMLLoader.load(getClass().getResource("VGestion_clientDashboard.fxml"));
+                Stage mainStage = new Stage();
+                Scene scene = new Scene(root);
+                mainStage.setScene(scene);
+                mainStage.show();
+    }
 
 
 

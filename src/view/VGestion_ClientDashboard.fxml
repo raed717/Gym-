@@ -5,14 +5,16 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="591.0" prefWidth="798.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VGestion_ClientDashboardController">
+<AnchorPane id="AnchorPane" prefHeight="594.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VGestion_ClientDashboardController">
    <children>
-      <Text layoutX="361.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Client" />
+      <Text layoutX="446.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestion Client" />
       <Button layoutX="571.0" layoutY="550.0" mnemonicParsing="false" onAction="#Bouton_Supprimer" style="-fx-background-color: #ff0000;" text="Supprimer" />
       <Button layoutX="397.0" layoutY="549.0" mnemonicParsing="false" onAction="#Bouton_Rechercher" text="Rechercher" />
-      <TableView fx:id="tab_client" layoutX="184.0" layoutY="42.0" prefHeight="329.0" prefWidth="598.0" style="-fx-background-color: #0000;">
+      <TableView fx:id="tab_client" layoutX="221.0" layoutY="44.0" prefHeight="329.0" prefWidth="598.0" style="-fx-background-color: #0000;">
          <columns>
             <TableColumn fx:id="id" prefWidth="44.800048828125" text="ID" />
             <TableColumn fx:id="nom" prefWidth="78.4000244140625" text="Nom" />
@@ -33,5 +35,34 @@
       <TextField fx:id="prenom_txt" layoutX="199.0" layoutY="420.0" promptText="Prenom" />
       <TextField fx:id="adresse_txt" layoutX="199.0" layoutY="452.0" promptText="Adresse" />
       <Button layoutX="569.0" layoutY="517.0" mnemonicParsing="false" onAction="#bouton_modifier" prefHeight="26.0" prefWidth="75.0" style="-fx-background-color: FFD661;" text="Modifier" />
+      <VBox layoutY="-1.0" prefHeight="594.0" prefWidth="179.0" style="-fx-background-color: #483D8B;">
+         <children>
+            <Button fx:id="go_client" mnemonicParsing="false" onAction="#go_client" prefHeight="62.0" prefWidth="182.0" style="-fx-background-color: #DDDDDD; -fx-border-color: black;" text="Client">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="go_abonnement" mnemonicParsing="false" onAction="#Go_abonnement" prefHeight="62.0" prefWidth="182.0" style="-fx-background-color: #DDDDDD; -fx-border-color: black;" text="Abonnement">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="182.0" style="-fx-background-color: trnansparont; -fx-border-color: white;" text="Button">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="62.0" prefWidth="182.0" style="-fx-background-color: trnansparont; -fx-border-color: white;" text="Button">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+            <Button fx:id="go_logout" mnemonicParsing="false" onAction="#go_logout" prefHeight="62.0" prefWidth="182.0" style="-fx-background-color: red; -fx-border-color: white;" text="log out">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
