@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.view.PanierController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="774.0" prefWidth="1116.0">
+         <children>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <bottom>
+                  <Pane prefHeight="776.0" prefWidth="336.0" style="-fx-background-color: #2D3447;" styleClass="left" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="22.0" layoutY="150.0" prefHeight="24.0" prefWidth="74.0" stylesheets="@../../../../../PIDEV%20(1)/PIDEV-master/src/pidev/utils/css/panier.css" text="GYM+">
+                           <font>
+                              <Font name="Impact" size="20.0" />
+                           </font>
+                           <textFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" green="1.0" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </textFill>
+                        </Label>
+                        <Button fx:id="Bt_Dashboard1" layoutX="2.0" layoutY="315.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="197.0" style="-fx-background-color: #191970;" text="Dashbord" textFill="WHITE">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="Bt_Dashboard11" layoutX="2.0" layoutY="369.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="197.0" style="-fx-background-color: #191970;" text="Panier" textFill="WHITE">
+                           <font>
+                              <Font name="Arial" size="18.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="133.0" fitWidth="159.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/2.jpg" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </bottom>
+            </BorderPane>
+            <AnchorPane layoutX="199.0" prefHeight="774.0" prefWidth="929.0">
+               <children>
+                  <BorderPane layoutX="1.0" layoutY="81.0" prefHeight="694.0" prefWidth="918.0">
+                     <center>
+                        <AnchorPane prefHeight="694.0" prefWidth="522.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TableView fx:id="tabpanier" layoutX="83.0" layoutY="98.0" prefHeight="498.0" prefWidth="470.0" stylesheets="@button.css">
+                                 <columns>
+                                    <TableColumn fx:id="id" prefWidth="117.5999755859375" text="ID" />
+                                    <TableColumn fx:id="description" prefWidth="117.5999755859375" text="Description" />
+                                    <TableColumn fx:id="nom" prefWidth="117.5999755859375" text="Nom" />
+                                    <TableColumn fx:id="prix" prefWidth="117.5999755859375" text="Prix" />
+                                    <TableColumn fx:id="categorie" prefWidth="117.5999755859375" text="Categorie" />
+                                 </columns></TableView>
+                              <Button fx:id="display" layoutX="224.0" layoutY="617.0" mnemonicParsing="false" onAction="#afficher" prefHeight="26.0" prefWidth="125.0" style="-fx-background-color: #DAA520;" styleClass="panier" stylesheets="@button.css" text="Dislplay" />
+                           </children>
+                        </AnchorPane>
+                     </center>
+                     <right>
+                        <AnchorPane prefHeight="694.0" prefWidth="318.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="247.0" prefWidth="200.0" text="Total:" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="32.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="120.0" top="200.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="prix_total" layoutX="132.0" layoutY="247.0" prefHeight="31.0" prefWidth="58.0" text="0.000" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="21.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="valider" layoutX="93.0" layoutY="619.0" mnemonicParsing="false" text="Valider panier">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </right>
+                  </BorderPane>
+                  <BorderPane prefHeight="81.0" prefWidth="918.0">
+                     <left>
+                        <Pane prefHeight="81.0" prefWidth="919.0" style="-fx-background-color: #2D3447;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Pane fx:id="retour" layoutX="855.0" layoutY="21.0" prefHeight="40.0" prefWidth="40.0">
+                                 <children>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../PIDEV%20(1)/PIDEV-master/src/pidev/utils/images/return.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="13.0" prefHeight="58.0" prefWidth="485.0" style="-fx-background-color: #e8e8e8;" text="Votre panier " textAlignment="CENTER" textFill="#757373">
+                                 <font>
+                                    <Font size="40.0" />
+                                 </font>
+                              </Label>
+                              <Pane fx:id="history" layoutX="799.0" layoutY="21.0" prefHeight="40.0" prefWidth="40.0">
+                                 <children>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../../../PIDEV%20(1)/PIDEV-master/src/pidev/utils/images/history.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </left>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
