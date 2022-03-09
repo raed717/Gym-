@@ -33,6 +33,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import static jdk.nashorn.internal.objects.ArrayBufferView.length;
 import utils.MyDB;
 
 /**
@@ -64,6 +65,8 @@ public class VGestion_ClientController implements Initializable {
     private TextField log_mdp;
     @FXML
     private Label lblErrors;
+        @FXML
+    private Label lblErrors1;
         @FXML
     private Button btnSignin;
 
@@ -138,9 +141,18 @@ public class VGestion_ClientController implements Initializable {
     }*/
       
 
-    @FXML
+@FXML
     public void AddClient(ActionEvent event) {
-        ClientService sp = new ClientService();
+        String error="Faute de saisie :";
+        if ("Faute de saisie :".equals(error)) {
+            if( "".equals(inom.getText())){error=error.concat("/Nom/");}
+            if( (imdp_client.getText()).length()<5 ){error=("/Mot de passe/");}
+            if( "".equals(iprenom.getText())){error=error.concat("/Prenom/");}
+            if(! iemail.getText().matches("\\w{3,}@\\S+")){error=error.concat("/ Email /");}
+            setLblError1(Color.TOMATO,error);
+        }
+        else{
+                ClientService sp = new ClientService();
         Client p = new Client(0, inom.getText(), iprenom.getText(), iadresse.getText(), iemail.getText(),
                 imdp_client.getText(), Integer.parseInt(iid_abonnement.getText()));
         try {
@@ -149,6 +161,9 @@ public class VGestion_ClientController implements Initializable {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+        
+        }
+       
     }
     
 
@@ -179,21 +194,21 @@ public class VGestion_ClientController implements Initializable {
             preparedStatement = connexion.prepareStatement(req);
             preparedStatement.setString(1, log_mail.getText());
             preparedStatement.setString(2, log_mdp.getText());
-            
             resultSet = preparedStatement.executeQuery();
             
             if(resultSet.next()){ 
-               /* String req1 = "Select id from client where mail = ?  ";
-                preparedStatement = connexion.prepareStatement(req1);
-                            preparedStatement.setString(1, log_mail.getText());
-                                        ResultSet rst = preparedStatement.executeQuery();
-             Client p = new Client(rst.getInt("id"));
-
-              int id_session=p.getId() ;
-                System.out.println(id_session);*/
-                JOptionPane.showMessageDialog(null, "Email et mot de passe sont correctes");
-                setLblError(Color.GREEN, "Connexion réussie..Redirection..");
                 
+               String req1 = "Select id from client where mail = ?  ";
+               
+              /* preparedStatement = connexion.prepareStatement(req1);
+               preparedStatement.setString(1, log_mail.getText());
+              ResultSet rst = preparedStatement.executeQuery();
+             Client p = new Client(rst.getInt("id"));
+              id_session=p.getId() ;
+                System.out.println(id_session);*/
+               
+                JOptionPane.showMessageDialog(null, "Email et mot de passe sont correctes");
+                setLblError(Color.GREEN, "Connexion réussite..Redirection..");
                 btnSignin.getScene().getWindow().hide();
                 Parent root = FXMLLoader.load(getClass().getResource("VGestion_ClientDashboard.fxml"));
                 Stage mainStage = new Stage();
@@ -210,14 +225,7 @@ public class VGestion_ClientController implements Initializable {
         }
    
     }
-    
-    
-    
-    
-    
-    
-    
-    
+      
     
     
     
@@ -250,6 +258,12 @@ public class VGestion_ClientController implements Initializable {
         private void setLblError(Color color, String text) {
         lblErrors.setTextFill(color);
         lblErrors.setText(text);
+        System.out.println(text);
+    }
+        
+                private void setLblError1(Color color, String text) {
+        lblErrors1.setTextFill(color);
+        lblErrors1.setText(text);
         System.out.println(text);
     }
     

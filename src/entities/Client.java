@@ -12,6 +12,7 @@ import java.sql.Date;
  * @author macbook
  */
 public class Client {
+    
 
     private int id;
     private String nom,prenom,adresse,mail;
@@ -123,6 +124,7 @@ boolean authentifie;
     public boolean getAuthentifie(){
         return this.authentifie;
     }
+
 
     
 }

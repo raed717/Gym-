@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+
 import services.ClientService;
 import entities.Client;
 import java.awt.event.MouseEvent;
@@ -21,6 +22,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -32,12 +34,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javax.lang.model.element.Element;
 import javax.swing.JOptionPane;
 import utils.MyDB;
-
-
-
 
 /**
  * FXML Controller class
@@ -55,7 +55,6 @@ public class VGestion_ClientDashboardController implements Initializable {
     @FXML
     private TableColumn<Client, Integer> id_abonnement;
 
-
     @FXML
     private TableColumn<Client, String> mail;
 
@@ -71,39 +70,39 @@ public class VGestion_ClientDashboardController implements Initializable {
     @FXML
     private TableView<Client> tab_client;
 
-    
-        @FXML
+    @FXML
     private TextField id_text;
-            @FXML
+    @FXML
     private TextField nom_txt;
-            @FXML
+    @FXML
     private TextField prenom_txt;
-@FXML
+    @FXML
     private TextField adresse_txt;
-@FXML
+    @FXML
     private TextField email_txt;
-@FXML
+    @FXML
     private TextField mdp_txt;
-@FXML
+    @FXML
     private TextField abonnement_txt;
     private int index = -1;
+    int id_session;
 
-
-
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
+
     Connection connexion;
     Statement stm;
-     public ObservableList<Client> data = FXCollections.observableArrayList();
- 
-        @FXML
+    public ObservableList<Client> data = FXCollections.observableArrayList();
+
+    @FXML
     void AfficherClient(ActionEvent event) throws SQLException {
+        for (int i = 0; i < tab_client.getItems().size(); i++) {
+            tab_client.getItems().clear();
+        }
         connexion = MyDB.getInstance().getConnexion();
-         String req = "select * from client";
+        String req = "select * from client";
         stm = connexion.createStatement();
         ResultSet rst = stm.executeQuery(req);
         while (rst.next()) {
@@ -124,68 +123,60 @@ public class VGestion_ClientDashboardController implements Initializable {
         id_abonnement.setCellValueFactory(new PropertyValueFactory<Client, Integer>("id_abonnement"));
         tab_client.setItems(data);
     }
-    
-    
-    
-        public void Quit(ActionEvent event) {
+
+    public void Quit(ActionEvent event) {
         System.exit(0);
     }
-        
-        
-               @FXML
+
+    @FXML
     void Export(ActionEvent event) {
         ClientService sp = new ClientService();
         sp.export_Client_csv();
         JOptionPane.showMessageDialog(null, "Exported in D:\\Doc\\NetBeansProjects\\PidevJavanb");
-
     }
-    
-    
-    
+
     @FXML
     void Bouton_Rechercher(ActionEvent event) throws SQLException {
-        int idr = Integer.parseInt(id_text.getText()); 
-        ClientService sp=new ClientService();
-        Client pdt=sp.RechecheClient(idr);
-        
+        int idr = Integer.parseInt(id_text.getText());
+        ClientService sp = new ClientService();
+        Client pdt = sp.RechecheClient(idr);
+
         nom_txt.setText(pdt.getNom());
         prenom_txt.setText(pdt.getPrenom());
         adresse_txt.setText(pdt.getAdresse());
         email_txt.setText(pdt.getMail());
         mdp_txt.setText(pdt.getMdp_client());
         abonnement_txt.setText(String.valueOf(pdt.getId_abonnement()));
-       
+
     }
 
     @FXML
     void Bouton_Supprimer(ActionEvent event) {
-          int idr = Integer.parseInt(id_text.getText()); 
-          ClientService sp=new ClientService();
-          sp.SupprimerCliente(idr);
-          JOptionPane.showMessageDialog(null, "Client supprimé");
+        int idr = Integer.parseInt(id_text.getText());
+        ClientService sp = new ClientService();
+        sp.SupprimerCliente(idr);
+        JOptionPane.showMessageDialog(null, "Client supprimé");
     }
-    
-        @FXML
+
+    @FXML
     void bouton_modifier(ActionEvent event) {
-          int idr = Integer.parseInt(id_text.getText()); 
-          ClientService sp=new ClientService();
-          sp.modifierCliente(idr, nom_txt.getText(), prenom_txt.getText(), adresse_txt.getText(), email_txt.getText(), mdp_txt.getText(), Integer.parseInt(abonnement_txt.getText()));
-          JOptionPane.showMessageDialog(null, "Client modifié");
-          UpdateTabel();
+        int idr = Integer.parseInt(id_text.getText());
+        ClientService sp = new ClientService();
+        sp.modifierCliente(idr, nom_txt.getText(), prenom_txt.getText(), adresse_txt.getText(), email_txt.getText(), mdp_txt.getText(), Integer.parseInt(abonnement_txt.getText()));
+        JOptionPane.showMessageDialog(null, "Client modifié");
+        UpdateTabel();
     }
-    
-    
-    
+
     /**
      *
      * @param event
      */
     @FXML
-    public void getSelected(MouseEvent event){
+    public void getSelected(MouseEvent event) {
         index = tab_client.getSelectionModel().getSelectedIndex();
-        if(index <= -1){
-        
-        return;
+        if (index <= -1) {
+
+            return;
         }
         id_text.setText(id.getCellData(index).toString());
         nom_txt.setText(nom.getCellData(index));
@@ -195,73 +186,74 @@ public class VGestion_ClientDashboardController implements Initializable {
         mdp_txt.setText(mdp_client.getCellData(index));
         abonnement_txt.setText(id_abonnement.getCellData(index).toString());
     }
-    
-    
-    
-    
-    public void UpdateTabel(){
-    id.setCellValueFactory(new PropertyValueFactory<Client, Integer>("id"));
-    nom.setCellValueFactory(new PropertyValueFactory<Client, String>("nom"));
-    prenom.setCellValueFactory(new PropertyValueFactory<Client, String>("prenom"));
-    adresse.setCellValueFactory(new PropertyValueFactory<Client, String>("adresse"));
-    mail.setCellValueFactory(new PropertyValueFactory<Client, String>("mail"));
-    mdp_client.setCellValueFactory(new PropertyValueFactory<Client, String>("mdp_client"));
-    id_abonnement.setCellValueFactory(new PropertyValueFactory<Client, Integer>("id_abonnement"));
-    
-    tab_client.setItems(data);
-    
-    
-  //data =  MyDB.getDatausers();
-    
 
-    
-    
+    @FXML
+    private void printRec(ActionEvent event) {
+        System.out.println("Impression en cours...!");
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null) {
+            Window primaryStage = null;
+            job.showPrintDialog(primaryStage);
+            Node root = this.tab_client;
+            job.printPage(root);
+            job.endJob();
+        }
     }
-    
 
-    
-    
-            @FXML
+    public void UpdateTabel() {
+        id.setCellValueFactory(new PropertyValueFactory<Client, Integer>("id"));
+        nom.setCellValueFactory(new PropertyValueFactory<Client, String>("nom"));
+        prenom.setCellValueFactory(new PropertyValueFactory<Client, String>("prenom"));
+        adresse.setCellValueFactory(new PropertyValueFactory<Client, String>("adresse"));
+        mail.setCellValueFactory(new PropertyValueFactory<Client, String>("mail"));
+        mdp_client.setCellValueFactory(new PropertyValueFactory<Client, String>("mdp_client"));
+        id_abonnement.setCellValueFactory(new PropertyValueFactory<Client, Integer>("id_abonnement"));
+
+        tab_client.setItems(data);
+
+        //data =  MyDB.getDatausers();
+    }
+
+    /*---------------------------------------NAVIGATION BAR--------------------------------------------*/
+    @FXML
     private Button go_abonnement;
-        @FXML
+
+    @FXML
     void Go_abonnement(ActionEvent event) throws IOException {
         go_abonnement.getScene().getWindow().hide();
-         Parent root = FXMLLoader.load(getClass().getResource("VGestion_abonnement.fxml"));
-                Stage mainStage = new Stage();
-                Scene scene = new Scene(root);
-                mainStage.setScene(scene);
-                mainStage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("VGestion_abonnement.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
     }
-    
+
     @FXML
     private Button go_logout;
-        @FXML
+
+    @FXML
     void go_logout(ActionEvent event) throws IOException {
+        id_session = 0;
         go_logout.getScene().getWindow().hide();
-         Parent root = FXMLLoader.load(getClass().getResource("VGestion_client.fxml"));
-                Stage mainStage = new Stage();
-                Scene scene = new Scene(root);
-                mainStage.setScene(scene);
-                mainStage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("VGestion_client.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
     }
-    
-        @FXML
+
+    @FXML
     private Button go_client;
-        @FXML
+
+    @FXML
     void go_client(ActionEvent event) throws IOException {
         go_client.getScene().getWindow().hide();
-         Parent root = FXMLLoader.load(getClass().getResource("VGestion_clientDashboard.fxml"));
-                Stage mainStage = new Stage();
-                Scene scene = new Scene(root);
-                mainStage.setScene(scene);
-                mainStage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("VGestion_clientDashboard.fxml"));
+        Stage mainStage = new Stage();
+        Scene scene = new Scene(root);
+        mainStage.setScene(scene);
+        mainStage.show();
     }
-    
-    
-    
+    /*---------------------------------------NAVIGATION BAR--------------------------------------------*/
 
-
-
-}
-    
-    
+}   //FIN

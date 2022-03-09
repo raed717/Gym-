@@ -53,5 +53,6 @@
       </Button>
       <PasswordField fx:id="imdp_client" layoutX="67.0" layoutY="252.0" promptText="mot de passe" />
       <TextField fx:id="iid_abonnement" accessibleRole="COMBO_BOX" layoutX="69.0" layoutY="292.0" promptText="id_abonnement" />
+      <Label fx:id="lblErrors1" layoutX="67.0" layoutY="353.0" prefHeight="31.0" prefWidth="414.0" text="Label" />
    </children>
 </AnchorPane>

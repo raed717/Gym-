@@ -60,5 +60,6 @@
             <Button fx:id="go_logout" mnemonicParsing="false" onAction="#go_logout" prefHeight="46.0" prefWidth="179.0" style="-fx-background-color: red; -fx-border-color: white;" text="log out" />
          </children>
       </VBox>
+      <Button layoutX="665.0" layoutY="517.0" mnemonicParsing="false" onAction="#printRec" prefHeight="26.0" prefWidth="119.0" text="Imprimer tableau" />
    </children>
 </AnchorPane>

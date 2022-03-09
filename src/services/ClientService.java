@@ -110,31 +110,7 @@ public class ClientService implements IClient<Client> {
     // ****************************************************METIER********************************************************************************
     // */
 
-    public List<Client> afficherPDF() {
-        List<Client> list = new ArrayList();
-
-        String requete = "SELECT * FROM Client";
-        try {
-
-            PreparedStatement pst = connexion.prepareStatement(requete);
-            ResultSet rs = pst.executeQuery(requete);
-            while (rs.next()) {
-                Client c = new Client();
-                c.setId(rs.getInt("id"));
-                c.setNom(rs.getString("nom"));
-                c.setPrenom(rs.getString("prenom"));
-                c.setAdresse(rs.getString("adresse"));
-                c.setMail(rs.getString("mail"));
-                c.setMdp_client(rs.getString("mdp_client"));
-                c.setId_abonnement(rs.getInt("id_abonnement"));
-                list.add(c);
-            }
-
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
-        return list;
-    }
+    
 
 public Client RechecheClient( int id) throws SQLException   {
                  
