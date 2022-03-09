@@ -2,6 +2,7 @@ package pidevjava;
 
 import entities.Client;
 import entities.Abonnement;
+import java.awt.Image;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -47,6 +48,7 @@ public class PidevJava extends Application  {
         stage.setScene(scene);
         stage.setTitle("Gym+");
         stage.show();
+        
         // stage.setResizable(false);
     }
       
@@ -76,6 +78,7 @@ public class PidevJava extends Application  {
 // ****************************************CLIENT***************************************************************  
         Client p = new Client(0, "mon","pote","fah","mail@mail.com","root",1);
         ClientService sp = new ClientService();
+        //sp.afficherPDF();
        
         
 

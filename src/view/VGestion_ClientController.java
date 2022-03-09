@@ -168,7 +168,7 @@ public class VGestion_ClientController implements Initializable {
      * }
  */
     
-    
+    int id_session;
     
         @FXML  
     private void logIn2 (ActionEvent event) throws Exception{  
@@ -183,6 +183,14 @@ public class VGestion_ClientController implements Initializable {
             resultSet = preparedStatement.executeQuery();
             
             if(resultSet.next()){ 
+               /* String req1 = "Select id from client where mail = ?  ";
+                preparedStatement = connexion.prepareStatement(req1);
+                            preparedStatement.setString(1, log_mail.getText());
+                                        ResultSet rst = preparedStatement.executeQuery();
+             Client p = new Client(rst.getInt("id"));
+
+              int id_session=p.getId() ;
+                System.out.println(id_session);*/
                 JOptionPane.showMessageDialog(null, "Email et mot de passe sont correctes");
                 setLblError(Color.GREEN, "Connexion réussie..Redirection..");
                 
