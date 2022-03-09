@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="630.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.AfficherCoachFXMLController">
+   <children>
+      <TableView fx:id="Tableau" layoutX="199.0" layoutY="39.0" prefHeight="440.0" prefWidth="544.0" style="-fx-background-color: #B0E0E6;">
+         <columns>
+            <TableColumn fx:id="INom" prefWidth="128.0" text="nom coach" />
+            <TableColumn fx:id="ISpecialite" prefWidth="169.0" text="specialite" />
+            <TableColumn fx:id="IMail" prefWidth="131.0" text="mail" />
+            <TableColumn fx:id="IPwd" prefWidth="115.0" text="mot de passe " />
+         </columns>
+      </TableView>
+      <Button fx:id="Bt_Supprimer" layoutX="619.0" layoutY="489.0" mnemonicParsing="false" onAction="#SupprimerEmployer" prefHeight="43.0" prefWidth="91.0" styleClass="button_Submit" stylesheets="@../../../../../Downloads/PIDEV%20(1)/PIDEV-master/src/pidev/views/styles.css" text="Supprimer" textFill="#1b1a1a">
+         <font>
+            <Font name="Lato Black" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="Bt_Search" layoutX="215.0" layoutY="496.0" mnemonicParsing="false" onAction="#SearchEmployer" text="Chercher">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Pane layoutY="4.0" prefHeight="622.0" prefWidth="197.0" style="-fx-background-color: #483D8B;" />
+   </children>
+</AnchorPane>

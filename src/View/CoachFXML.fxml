@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="View.CoachFXMLController">
+   <children>
+      <AnchorPane layoutX="11.0" layoutY="12.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="709.0">
+         <children>
+            <Pane layoutX="100.0" layoutY="-11.0" prefHeight="104.0" prefWidth="609.0" style="-fx-background-color: #483D8B;">
+               <children>
+                  <Label layoutX="180.0" layoutY="39.0" prefHeight="38.0" prefWidth="355.0" text="Ajouter coach" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Microsoft Sans Serif" size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Text layoutX="222.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom" />
+            <Text layoutX="218.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mot de passe" />
+            <Text layoutX="220.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="specialite" />
+            <TextField fx:id="ICoach_name" layoutX="317.0" layoutY="143.0" styleClass="formInput" stylesheets="@../../../../../Downloads/PIDEV%20(1)/PIDEV-master/src/pidev/utils/css/styles.css" />
+            <ImageView fx:id="Photo_Input1" />
+            <Button fx:id="button_Submit1" layoutX="499.0" layoutY="465.0" mnemonicParsing="false" onAction="#AddPerson" prefHeight="38.0" prefWidth="142.0" styleClass="button_Submit" stylesheets="@../../../../../Downloads/PIDEV%20(1)/PIDEV-master/src/pidev/utils/css/styles.css" text="ajouter" />
+            <ImageView fitHeight="38.0" fitWidth="41.0" layoutX="668.0" layoutY="530.0" pickOnBounds="true" smooth="false" styleClass="img">
+               <image>
+                  <Image url="@../../../../../Downloads/PIDEV%20(1)/PIDEV-master/src/pidev/utils/images/s4s_1.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="alertDatenaissance1" fill="#f10a0a" layoutX="280.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="149.00000110708334" />
+            <Text fx:id="alertEmail1" fill="#f10a0a" layoutX="527.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="149.00000110708334" />
+            <Text fx:id="alertTel1" fill="#f10a0a" layoutX="283.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="149.00000110708334" />
+            <Pane layoutX="-11.0" layoutY="-11.0" prefHeight="577.0" prefWidth="151.0" style="-fx-background-color: #483D8B;" />
+            <Text layoutX="223.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="mail" />
+            <TextField fx:id="IMail" layoutX="317.0" layoutY="324.0" styleClass="formInput" stylesheets="@../../../../../Downloads/PIDEV%20(1)/PIDEV-master/src/pidev/utils/css/styles.css" />
+            <TextField fx:id="ISpecialite" layoutX="317.0" layoutY="235.0" styleClass="formInput" stylesheets="@../../../../../Downloads/PIDEV%20(1)/PIDEV-master/src/pidev/utils/css/styles.css" />
+            <TextField fx:id="IPwd" layoutX="317.0" layoutY="418.0" styleClass="formInput" stylesheets="@../../../../../Downloads/PIDEV%20(1)/PIDEV-master/src/pidev/utils/css/styles.css" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
