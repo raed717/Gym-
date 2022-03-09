@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+
 import services.ClientService;
 import entities.Client;
 import java.awt.event.MouseEvent;
@@ -65,211 +66,101 @@ public class VGestion_ClientController implements Initializable {
     private TextField log_mdp;
     @FXML
     private Label lblErrors;
-        @FXML
+    @FXML
     private Label lblErrors1;
-        @FXML
+    @FXML
     private Button btnSignin;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
-  
-    
-    
-    /*@FXML
-    String logIn() {
-        String status = "Success";
-        String mail = log_mail.getText();
-        String mdp_client = log_mdp.getText();
-        ResultSet res;
 
-        if (!mail.matches("\\w{3,}@\\S+") || mdp_client.length()<4) {
-            //JOptionPane.showMessageDialog(null, "veuillez remplir les champs correctement");
-            setLblError(Color.TOMATO, "Enter Correct Email/Password");
-            status = "Error";
-        } else {
-            // query
-            String req = "SELECT * FROM client Where mail = ? and mdp_client = ? ";
-            try {
-                PreparedStatement ps = connexion.prepareStatement(req);
-                ps.setString(1, mail);
-                ps.setString(2, mdp_client);
-                res = preparedStatement.executeQuery();
-                if (!res.next()) {
-                    setLblError(Color.TOMATO, "Enter Correct Email/Password");
-                    status = "Error";
-                } else {
-                    setLblError(Color.GREEN, "Login Successful..Redirecting..");
-                    
-                }
-            } catch (SQLException ex) {
-                System.err.println(ex.getMessage());
-                status = "Exception";
-            }
-        }
-        return status;
-    }
-
-
-    
-     
     @FXML
-    public void handleButtonAction(ActionEvent event) {
-
-        if (event.getSource() == btnSignin) {
-            //login here
-            if (logIn().equals("Success")) {
-                try {
-
-                    //add you loading or delays - ;-)
-                    Node node = (Node) event.getSource();
-                    Stage stage = (Stage) node.getScene().getWindow();
-                    //stage.setMaximized(true);
-                    stage.close();
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/VGestion_abonnement.fxml")));
-                    stage.setScene(scene);
-                    stage.show();
-
-                } catch (IOException ex) {
-                    System.err.println(ex.getMessage());
-                }
-
-            }
-        }
-    }*/
-      
-
-@FXML
     public void AddClient(ActionEvent event) {
-        String error="Faute de saisie :";
+        String error = "Faute de saisie :";
         if ("Faute de saisie :".equals(error)) {
-            if( "".equals(inom.getText())){error=error.concat("/Nom/");}
-            if( (imdp_client.getText()).length()<5 ){error=("/Mot de passe/");}
-            if( "".equals(iprenom.getText())){error=error.concat("/Prenom/");}
-            if(! iemail.getText().matches("\\w{3,}@\\S+")){error=error.concat("/ Email /");}
-            setLblError1(Color.TOMATO,error);
+            if ("".equals(inom.getText())) {
+                error = error.concat("/Nom/");
+            }
+            if ((imdp_client.getText()).length() < 5) {
+                error = ("/Mot de passe/");
+            }
+            if ("".equals(iprenom.getText())) {
+                error = error.concat("/Prenom/");
+            }
+            if (!iemail.getText().matches("\\w{3,}@\\S+")) {
+                error = error.concat("/ Email /");
+            }
+            setLblError1(Color.TOMATO, error);
+        } else {
+            ClientService sp = new ClientService();
+            Client p = new Client(0, inom.getText(), iprenom.getText(), iadresse.getText(), iemail.getText(),
+                    imdp_client.getText(), Integer.parseInt(iid_abonnement.getText()));
+            try {
+                sp.ajouterClient(p);
+                System.out.println("ajout avec succes");
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+
         }
-        else{
-                ClientService sp = new ClientService();
-        Client p = new Client(0, inom.getText(), iprenom.getText(), iadresse.getText(), iemail.getText(),
-                imdp_client.getText(), Integer.parseInt(iid_abonnement.getText()));
-        try {
-            sp.ajouterClient(p);
-            System.out.println("ajout avec succes");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        
-        }
-       
+
     }
-    
-
-    
-      
 
 
-/*
-     * @FXML
-     * private void ListPersons(ActionEvent event) {
-     * ClientService sp= new ClientService();
-     * try {
-     * listP.setText(sp.afficherpersonne().toString());
-     * } catch (SQLException ex) {
-     * System.out.println(ex.getMessage());
-     * }
-     * }
- */
-    
-    int id_session;
-    
-        @FXML  
-    private void logIn2 (ActionEvent event) throws Exception{  
+    @FXML
+    private void logIn2(ActionEvent event) throws Exception {
         
-       connexion = MyDB.getInstance().getConnexion();
-    String req = "Select * from client where mail = ? and mdp_client = ? ";
+ //LOGIN ADMIN
+        if ("admin_gym@gmail.com".equals(log_mail.getText()) && "root123".equals(log_mdp.getText())) {
+            setLblError(Color.GREEN, "Connexion réussite..Redirection..");
+            JOptionPane.showMessageDialog(null, "Bienvenue Admin !");
+            btnSignin.getScene().getWindow().hide();
+            Parent root = FXMLLoader.load(getClass().getResource("VGestion_ClientDashboard.fxml"));
+            Stage mainStage = new Stage();
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.show();
+            
+//LOGIN CLIENT
+        } else { 
+                    connexion = MyDB.getInstance().getConnexion();
+        String req = "Select * from client where mail = ? and mdp_client = ? ";
         try {
             preparedStatement = connexion.prepareStatement(req);
             preparedStatement.setString(1, log_mail.getText());
             preparedStatement.setString(2, log_mdp.getText());
             resultSet = preparedStatement.executeQuery();
-            
-            if(resultSet.next()){ 
-                
-               String req1 = "Select id from client where mail = ?  ";
-               
-              /* preparedStatement = connexion.prepareStatement(req1);
-               preparedStatement.setString(1, log_mail.getText());
-              ResultSet rst = preparedStatement.executeQuery();
-             Client p = new Client(rst.getInt("id"));
-              id_session=p.getId() ;
-                System.out.println(id_session);*/
-               
-                JOptionPane.showMessageDialog(null, "Email et mot de passe sont correctes");
+            if (resultSet.next()) {
                 setLblError(Color.GREEN, "Connexion réussite..Redirection..");
+                JOptionPane.showMessageDialog(null, "Bienvenue");
                 btnSignin.getScene().getWindow().hide();
                 Parent root = FXMLLoader.load(getClass().getResource("VGestion_ClientDashboard.fxml"));
                 Stage mainStage = new Stage();
                 Scene scene = new Scene(root);
                 mainStage.setScene(scene);
                 mainStage.show();
-                
-            }else
-                setLblError(Color.TOMATO, "Entrez le bon e-mail/mot de passe");
-                //JOptionPane.showMessageDialog(null, "E-mail ou mot de passe invalide");
-            
+            } else {
+                setLblError(Color.TOMATO, "Entrez E-mail/mot de passe valide");
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
+        } 
         }
-   
     }
-      
-    
-    
-    
-    /*@FXML
-    public void logIn2(ActionEvent event) throws IOException {
-        String status = "Success";
-        String mail = log_mail.getText();
-        String mdp_client = log_mdp.getText();
-        ResultSet res;
 
-        if (!mail.matches("\\w{3,}@\\S+") || mdp_client.length()<4) {
-            //JOptionPane.showMessageDialog(null, "veuillez remplir les champs correctement");
-            setLblError(Color.TOMATO, "Enter Correct Email/Password");
-            status = "Error";
-        } else {
-            setLblError(Color.GREEN, "Login Successful..Redirecting..");
-                    //add you loading or delays - ;-)
-                    Node node = (Node) event.getSource();
-                    Stage stage = (Stage) node.getScene().getWindow();
-                    //stage.setMaximized(true);
-                    stage.close();
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/VGestion_abonnement.fxml")));
-                    stage.setScene(scene);
-                    stage.show();        
-        }
-       
-    }*/
     
-    
-        private void setLblError(Color color, String text) {
+    private void setLblError(Color color, String text) {
         lblErrors.setTextFill(color);
         lblErrors.setText(text);
         System.out.println(text);
     }
-        
-                private void setLblError1(Color color, String text) {
+
+    private void setLblError1(Color color, String text) {
         lblErrors1.setTextFill(color);
         lblErrors1.setText(text);
         System.out.println(text);
     }
-    
-    
-    
-    
-    
-    
+
 }
