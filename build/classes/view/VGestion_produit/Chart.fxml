@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="512.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VGestion_produit.ChartController">
+   <children>
+      <BarChart fx:id="Chart" layoutX="31.0" layoutY="31.0" title=" ">
+        <xAxis>
+          <CategoryAxis label="Name" side="BOTTOM" fx:id="x" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="y" label="Price" side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </children>
+</AnchorPane>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.VGestion_seance.AfficherSeanceFXMLController">
+   <children>
+      <AnchorPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="615.0" prefWidth="731.0">
+         <children>
+            <TableView fx:id="Tableau" layoutX="119.0" layoutY="29.0" prefHeight="313.0" prefWidth="612.0" style="-fx-background-color: #B0E0E6;">
+               <columns>
+                  <TableColumn fx:id="Type_seance" prefWidth="141.0" text="type seance" />
+                  <TableColumn fx:id="Date_debut" prefWidth="134.0" text="date debut seance" />
+                  <TableColumn fx:id="Date_fin" prefWidth="135.0" text="date fin seance" />
+                  <TableColumn fx:id="Id_coach" prefWidth="98.0" text="coach ID" />
+                  <TableColumn fx:id="Id_seance" prefWidth="103.0" text="Seance ID" />
+               </columns>
+            </TableView>
+            <Button fx:id="Bt_Supprimer" layoutX="621.0" layoutY="515.0" mnemonicParsing="false" onAction="#SupprimerEmployer" prefHeight="30.0" prefWidth="91.0" styleClass="button_Submit" stylesheets="@../../../../../Downloads/PIDEV%20(1)/PIDEV-master/src/pidev/views/styles.css" text="Supprimer" textFill="#1b1a1a">
+               <font>
+                  <Font name="Lato Black" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="Bt_Search" layoutX="618.0" layoutY="359.0" mnemonicParsing="false" onAction="#SearchEmployer" prefHeight="30.0" prefWidth="91.0" text="Afficher">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Text fx:id="alertRechere" fill="#f50e0e" layoutX="242.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="77.9999973488616" />
+            <Pane layoutY="-3.0" prefHeight="622.0" prefWidth="137.0" style="-fx-background-color: #483D8B;" />
+            <Button layoutX="620.0" layoutY="471.0" mnemonicParsing="false" onAction="#UpdateSeance" prefHeight="25.0" prefWidth="91.0" text="Modifier" />
+            <Button layoutX="618.0" layoutY="414.0" mnemonicParsing="false" onAction="#RechercherSeance" prefHeight="30.0" prefWidth="91.0" text="Rechercher" />
+            <TextField fx:id="text_type" layoutX="146.0" layoutY="362.0" />
+            <TextField fx:id="txt_debut" layoutX="146.0" layoutY="407.0" />
+            <TextField fx:id="txt_fin" layoutX="146.0" layoutY="459.0" />
+            <TextField fx:id="txt_coachid" layoutX="146.0" layoutY="503.0" />
+            <TextField fx:id="txt_seanceid" layoutX="146.0" layoutY="545.0" />
+            <TextField fx:id="Id_text" layoutX="540.0" layoutY="417.0" prefHeight="25.0" prefWidth="63.0" />
+            <Button fx:id="pdf_btn" layoutX="408.0" layoutY="542.0" mnemonicParsing="false" onAction="#PdfSeance" prefHeight="30.0" prefWidth="103.0" text="PDF" />
+            <Button fx:id="Bt_Dashboard1" layoutY="220.0" mnemonicParsing="false" onAction="#GoToDashbord" prefHeight="38.0" prefWidth="138.0" style="-fx-background-color: #191970;" text="Dashbord" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Built-By: andy
+
+Name: common
+Specification-Title: jakarta-poi
+Specification-Version: 1.8.0
+Specification-Vendor: Apache Software Foundation
+Implementation-Title: jakarta-poi
+Implementation-Version: 1.8.0-dev
+Implementation-Vendor: Apache Software Foundation
+

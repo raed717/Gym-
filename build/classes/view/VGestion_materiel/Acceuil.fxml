@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.graphique.AcceuilController">
+   <children>
+      <Button fx:id="F" layoutX="90.0" layoutY="245.0" mnemonicParsing="false" onAction="#IF" prefHeight="86.0" prefWidth="192.0" style="-fx-background-color: white;" text="Fournisseur">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font></Button>
+      <Button fx:id="M" layoutX="322.0" layoutY="245.0" mnemonicParsing="false" onAction="#IM" prefHeight="86.0" prefWidth="166.0" style="-fx-background-color: white;" text="Materiel">
+         <font>
+            <Font name="System Bold Italic" size="25.0" />
+         </font></Button>
+      <Text layoutX="163.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GYM+" textAlignment="CENTER" wrappingWidth="273.33685302734375">
+         <font>
+            <Font size="92.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
