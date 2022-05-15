@@ -114,7 +114,7 @@ public class VGestion_ClientController implements Initializable {
     private void logIn2(ActionEvent event) throws Exception {
         
  //LOGIN ADMIN
-        if ("admin_gym@gmail.com".equals(log_mail.getText()) && "root123".equals(log_mdp.getText())) {
+        if ("admin@gymplus.com".equals(log_mail.getText()) && "admin".equals(log_mdp.getText())) {
             setLblError(Color.GREEN, "Connexion réussite..Redirection..");
             JOptionPane.showMessageDialog(null, "Bienvenue Admin !");
             btnSignin.getScene().getWindow().hide();
